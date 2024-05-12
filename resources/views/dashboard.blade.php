@@ -1,17 +1,27 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+    @dd($posts)
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">UserName</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($posts as $post)        
+          <tr>
+            <th scope="row">1</th>
+            <td>{{ $post->user->name }}</td>
+            <td>{{ $post->title }}</td>
+            <td>{{ $post->description }}</td>
+            <td>{{ $post->is_active }}</td>
+          </tr>
+          @endforeach
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
+        
+        </tbody>
+      </table>
 </x-app-layout>
